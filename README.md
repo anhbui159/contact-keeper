@@ -1,11 +1,11 @@
-#Contact Keeper
+# Contact Keeper
 The basic contact keeper using MERN stack
 
-#Demo
+# Demo
 Will be updated later
 
-#Backend
+# Backend
 NodeJS for the backend of the application
 
-#Frontend
-ReactJS 
+# Frontend
+ReactJS
