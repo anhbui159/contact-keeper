@@ -1,5 +1,5 @@
 #Contact Keeper
-The basic contact keeping using MERN stack
+The basic contact keeper using MERN stack
 
 #Demo
 Will be updated later
