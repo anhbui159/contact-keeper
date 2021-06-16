@@ -43,9 +43,7 @@ router.post(
         type,
         user: req.user.id,
       });
-
       const contact = await newContact.save();
-
       res.json(contact);
     } catch (err) {
       console.error(err.message);
@@ -68,8 +66,10 @@ router.put('/:id', auth, async (req, res) => {
   if (type) contactFields.type = type;
 
   try {
+    //Find contact by the parameters
     let contact = await Contact.findById(req.params.id);
 
+    //Return if contact does not exist
     if (!contact) return res.status(404).json({ msg: 'Contact not found' });
 
     //Make sure user owns contact
@@ -77,6 +77,7 @@ router.put('/:id', auth, async (req, res) => {
       return res.status(401).json({ msg: 'Not authorized' });
     }
 
+    //Find and update contact
     contact = await Contact.findByIdAndUpdate(
       req.params.id,
       {
@@ -105,8 +106,9 @@ router.delete('/:id', auth, async (req, res) => {
       return res.status(401).json({ msg: 'Not authorized' });
     }
 
+    //Find and remove
     await Contact.findByIdAndRemove(req.params.id);
-    res.json({msg: "Contact removed"});
+    res.json({ msg: 'Contact removed' });
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
